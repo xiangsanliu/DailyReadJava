@@ -7,7 +7,7 @@ import java.util.List;
  *
  */
 
-class Story {
+public class Story {
 
     private List<String> images;
     private int type;
