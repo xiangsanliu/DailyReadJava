@@ -8,6 +8,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -96,16 +97,43 @@ public class ReadActivity extends AppCompatActivity implements ReadView {
             }
         });
 
-        Intent sharingIntent = new Intent().setAction(Intent.ACTION_SEND).setType("text/plain");
-        String sharingText = article.getTitle() + '\n' + article.getShare_url();
-        sharingIntent.putExtra(Intent.EXTRA_TEXT, sharingText);
-        binding.fab.setOnClickListener(v -> startActivity(Intent.createChooser(sharingIntent, article.getTitle())));
+        binding.fab.setOnClickListener(v -> share(article));
         binding.toolbar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
+                case R.id.action_share:
+                    share(article);
+                    break;
                 default:
                     break;
             }
             return true;
         });
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_read, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_share).setVisible(state == CollapsingToolbarLayoutState.EXPANDED);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    private void share(Article article) {
+        Intent sharingIntent = new Intent().setAction(Intent.ACTION_SEND).setType("text/plain");
+        String sharingText = article.getTitle() + '\n' + article.getShare_url();
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, sharingText);
+        startActivity(Intent.createChooser(sharingIntent, article.getTitle()));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
