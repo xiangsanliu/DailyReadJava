@@ -1,20 +1,20 @@
 package com.py.cheng.nong.xiang.dailyreadjava.presenter;
 
 import android.content.Context;
-import android.view.View;
 
 import com.alibaba.fastjson.JSON;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.py.cheng.nong.xiang.dailyreadjava.model.adapter.StoryAdapter;
 import com.py.cheng.nong.xiang.dailyreadjava.model.bean.Date;
-import com.py.cheng.nong.xiang.dailyreadjava.share.ShareConsts;
+import com.py.cheng.nong.xiang.dailyreadjava.share.SharedConstants;
 import com.py.cheng.nong.xiang.dailyreadjava.view.MainView;
 
 import cz.msebera.android.httpclient.Header;
 
 /**
  * Created by xiang on 2018/3/14.
+ *
  */
 
 public class MainPresenter extends BasePresenter<MainView> {
@@ -27,11 +27,12 @@ public class MainPresenter extends BasePresenter<MainView> {
 
     @Override
     public void onCreate() {
+        view.initViews();
         loadStoryList();
     }
 
     private void loadStoryList() {
-        new AsyncHttpClient().get(ShareConsts.MAIN_URL, new AsyncHttpResponseHandler() {
+        new AsyncHttpClient().get(SharedConstants.MAIN_URL, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 Date date = JSON.parseObject(new String(responseBody), Date.class);

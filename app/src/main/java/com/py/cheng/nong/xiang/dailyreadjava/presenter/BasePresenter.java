@@ -20,7 +20,7 @@ public abstract class BasePresenter <T extends BaseView> {
         this.view = view;
     }
 
-    public void showToast(Context context, String toast) {
+    void showToast(Context context, String toast) {
         Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
     }
 }

@@ -6,5 +6,8 @@ package com.py.cheng.nong.xiang.dailyreadjava.view;
  */
 
 public interface BaseView {
+    /**
+     * initViews()方法在BaseActivity处调用
+     */
     void initViews();
 }
