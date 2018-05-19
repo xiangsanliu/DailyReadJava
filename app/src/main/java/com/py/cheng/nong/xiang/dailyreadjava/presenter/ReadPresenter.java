@@ -1,6 +1,6 @@
 package com.py.cheng.nong.xiang.dailyreadjava.presenter;
 
-import android.app.Activity;
+import android.content.Context;
 
 import com.alibaba.fastjson.JSON;
 import com.loopj.android.http.AsyncHttpClient;
@@ -17,10 +17,10 @@ import cz.msebera.android.httpclient.Header;
 
 public class ReadPresenter extends BasePresenter<ReadView> {
 
-    private Activity activity;
+    private Context context;
 
-    public ReadPresenter(Activity activity) {
-        this.activity = activity;
+    public ReadPresenter(Context context) {
+        this.context = context;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ReadPresenter extends BasePresenter<ReadView> {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                showToast(activity, error.getMessage());
+                showToast(context, error.getMessage());
             }
         });
     }
