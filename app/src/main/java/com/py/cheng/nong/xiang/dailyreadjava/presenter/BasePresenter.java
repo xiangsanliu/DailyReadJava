@@ -7,10 +7,9 @@ import com.py.cheng.nong.xiang.dailyreadjava.view.BaseView;
 
 /**
  * Created by xiang on 2018/3/14.
- *
  */
 
-public abstract class BasePresenter <T extends BaseView> {
+public abstract class BasePresenter<T extends BaseView> {
 
     protected T view;
 

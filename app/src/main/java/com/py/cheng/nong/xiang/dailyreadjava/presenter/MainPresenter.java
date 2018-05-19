@@ -14,7 +14,6 @@ import cz.msebera.android.httpclient.Header;
 
 /**
  * Created by xiang on 2018/3/14.
- *
  */
 
 public class MainPresenter extends BasePresenter<MainView> {
@@ -28,10 +27,9 @@ public class MainPresenter extends BasePresenter<MainView> {
     @Override
     public void onCreate() {
         view.initViews();
-        loadStoryList();
     }
 
-    private void loadStoryList() {
+    public void loadStoryList() {
         new AsyncHttpClient().get(SharedConstants.MAIN_URL, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

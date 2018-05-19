@@ -4,7 +4,6 @@ import com.py.cheng.nong.xiang.dailyreadjava.model.bean.Article;
 
 /**
  * Created by xiang on 2018/3/14.
- *
  */
 
 public interface ReadView extends BaseView {

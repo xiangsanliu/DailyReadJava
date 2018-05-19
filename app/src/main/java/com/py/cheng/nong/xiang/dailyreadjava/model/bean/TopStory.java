@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * Created by xiang on 2018/3/5.
- *
  */
 
 class TopStory {

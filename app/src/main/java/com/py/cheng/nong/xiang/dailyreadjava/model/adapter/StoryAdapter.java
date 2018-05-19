@@ -2,7 +2,6 @@ package com.py.cheng.nong.xiang.dailyreadjava.model.adapter;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -17,7 +16,6 @@ import java.util.List;
 
 /**
  * Created by xiang on 2018/3/5.
- *
  */
 
 public class StoryAdapter extends BaseQuickAdapter<Story, BaseViewHolder> {
