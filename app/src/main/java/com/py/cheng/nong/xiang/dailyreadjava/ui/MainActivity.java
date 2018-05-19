@@ -21,6 +21,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements M
     @Override
     public void initViews() {
         binding.storyList.setLayoutManager(new LinearLayoutManager(this));
+        setSupportActionBar(binding.toolbar);
     }
 
     @Override
