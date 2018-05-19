@@ -24,14 +24,13 @@ import com.py.cheng.nong.xiang.dailyreadjava.view.ReadView;
 public class ReadActivity extends AppCompatActivity implements ReadView {
 
     private ActivityReadBinding binding;
-    private ReadPresenter presenter;
     private CollapsingToolbarLayoutState state = CollapsingToolbarLayoutState.EXPANDED;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_read);
-        presenter = new ReadPresenter(this);
+        ReadPresenter presenter = new ReadPresenter(this);
         presenter.attachView(this);
         presenter.onCreate();
     }
@@ -108,8 +107,6 @@ public class ReadActivity extends AppCompatActivity implements ReadView {
             }
             return true;
         });
-
-
     }
 
     @Override

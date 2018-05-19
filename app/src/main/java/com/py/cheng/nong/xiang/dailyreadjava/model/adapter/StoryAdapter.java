@@ -10,6 +10,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.py.cheng.nong.xiang.dailyreadjava.R;
 import com.py.cheng.nong.xiang.dailyreadjava.model.bean.Story;
+import com.py.cheng.nong.xiang.dailyreadjava.share.SharedConstants;
 import com.py.cheng.nong.xiang.dailyreadjava.ui.ReadActivity;
 
 import java.util.List;
@@ -30,13 +31,10 @@ public class StoryAdapter extends BaseQuickAdapter<Story, BaseViewHolder> {
     protected void convert(BaseViewHolder holder, final Story item) {
         Glide.with(mContext).load(item.getImages().get(0)).into((ImageView) holder.getView(R.id.image));
         holder.setText(R.id.story_title, item.getTitle());
-        holder.getView(R.id.card_view).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(mContext, ReadActivity.class);
-                intent.putExtra("article_id", item.getId());
-                mContext.startActivity(intent);
-            }
+        holder.getView(R.id.card_view).setOnClickListener(view -> {
+            Intent intent = new Intent(mContext, ReadActivity.class);
+            intent.putExtra(SharedConstants.ARTICLE_ID_KEY, item.getId());
+            mContext.startActivity(intent);
         });
     }
 }

@@ -1,5 +1,6 @@
 package com.py.cheng.nong.xiang.dailyreadjava.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.alibaba.fastjson.JSON;
@@ -19,16 +20,16 @@ import cz.msebera.android.httpclient.Header;
 
 public class ReadPresenter extends BasePresenter<ReadView> {
 
-    private Context context;
-    private StoryAdapter adapter;
+    private Activity activity;
 
-    public ReadPresenter(Context context) {
-        this.context = context;
+    public ReadPresenter(Activity activity) {
+        this.activity = activity;
     }
 
     @Override
     public void onCreate() {
         view.initViews();
+        loadArticle(activity.getIntent().getStringExtra(SharedConstants.ARTICLE_ID_KEY));
     }
 
     /**
@@ -45,7 +46,7 @@ public class ReadPresenter extends BasePresenter<ReadView> {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                showToast(context, error.getMessage());
+                showToast(activity, error.getMessage());
             }
         });
     }
