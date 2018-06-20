@@ -15,7 +15,8 @@ import com.py.cheng.nong.xiang.dailyreadjava.ui.ReadActivity;
 import java.util.List;
 
 /**
- * Created by xiang on 2018/3/5.
+ * @author xiang
+ * @date 2018/3/5
  */
 
 public class StoryAdapter extends BaseQuickAdapter<Story, BaseViewHolder> {

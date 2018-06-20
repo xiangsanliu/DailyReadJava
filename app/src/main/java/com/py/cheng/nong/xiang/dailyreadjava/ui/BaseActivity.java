@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.py.cheng.nong.xiang.dailyreadjava.view.BaseView;
+/**
+ * @author xiang
+ */
 
-public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatActivity implements BaseView {
+public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatActivity {
 
     T binding;
 
@@ -21,10 +23,26 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         initData();
     }
 
+    /**
+     * 初始化组件
+     */
+    protected abstract void initViews();
+
+    /**
+     * getLayout
+     *
+     * @return layout
+     */
     protected abstract int getLayoutId();
 
+    /**
+     * 初始化数据
+     */
     protected abstract void initData();
 
+    /**
+     * 初始化presenter
+     */
     protected abstract void initPresenter();
 
 }

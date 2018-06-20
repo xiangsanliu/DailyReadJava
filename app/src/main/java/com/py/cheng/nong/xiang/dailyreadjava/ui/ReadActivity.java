@@ -16,6 +16,10 @@ import com.py.cheng.nong.xiang.dailyreadjava.share.CollapsingToolbarLayoutState;
 import com.py.cheng.nong.xiang.dailyreadjava.share.SharedConstants;
 import com.py.cheng.nong.xiang.dailyreadjava.view.ReadView;
 
+/**
+ * @author xiang
+ */
+
 public class ReadActivity extends BaseActivity<ActivityReadBinding> implements ReadView {
 
     private ReadPresenter presenter;
@@ -25,17 +29,6 @@ public class ReadActivity extends BaseActivity<ActivityReadBinding> implements R
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void initViews() {
-        initStatusBar();
-        initToolBar();
-    }
-
-    @Override
-    public void initData() {
-        presenter.loadArticle(getIntent().getStringExtra(SharedConstants.ARTICLE_ID_KEY));
     }
 
     @Override
@@ -100,15 +93,25 @@ public class ReadActivity extends BaseActivity<ActivityReadBinding> implements R
     }
 
     @Override
+    protected void initViews() {
+        initStatusBar();
+        initToolBar();
+    }
+
+    @Override
+    protected void initData() {
+        presenter.loadArticle(getIntent().getStringExtra(SharedConstants.ARTICLE_ID_KEY));
+    }
+
+    @Override
     protected void initPresenter() {
         presenter = new ReadPresenter(this);
         presenter.attachView(this);
-        presenter.onCreate();
     }
 
     private void share(Article article) {
         Intent sharingIntent = new Intent().setAction(Intent.ACTION_SEND).setType("text/plain");
-        String sharingText = article.getTitle() + '\n' + article.getShare_url();
+        String sharingText = article.getTitle() + '\n' + article.getShareUrl();
         sharingIntent.putExtra(Intent.EXTRA_TEXT, sharingText);
         startActivity(Intent.createChooser(sharingIntent, article.getTitle()));
     }
@@ -138,6 +141,5 @@ public class ReadActivity extends BaseActivity<ActivityReadBinding> implements R
         binding.toolbarLayout.setTitle(" ");
         binding.toolbar.setNavigationOnClickListener(v -> finish());
     }
-
 
 }

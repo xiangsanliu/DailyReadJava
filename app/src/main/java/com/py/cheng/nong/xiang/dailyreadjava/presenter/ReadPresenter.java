@@ -12,7 +12,8 @@ import com.py.cheng.nong.xiang.dailyreadjava.view.ReadView;
 import cz.msebera.android.httpclient.Header;
 
 /**
- * Created by xiang on 2018/3/14.
+ * @author xiang
+ * @date 2018/3/14
  */
 
 public class ReadPresenter extends BasePresenter<ReadView> {
@@ -21,11 +22,6 @@ public class ReadPresenter extends BasePresenter<ReadView> {
 
     public ReadPresenter(Context context) {
         this.context = context;
-    }
-
-    @Override
-    public void onCreate() {
-        view.initViews();
     }
 
     /**

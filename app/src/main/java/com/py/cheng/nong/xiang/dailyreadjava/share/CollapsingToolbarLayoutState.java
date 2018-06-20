@@ -1,10 +1,13 @@
 package com.py.cheng.nong.xiang.dailyreadjava.share;
 
 /**
- * Created by xiang on 2018/3/14.
+ *
+ * @author xiang
+ * @date 2018/3/14
  */
 
 public enum CollapsingToolbarLayoutState {
+    // 折叠栏状态
     EXPANDED,
     COLLAPSED,
     INTERNEDIATE

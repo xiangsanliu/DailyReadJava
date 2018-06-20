@@ -9,6 +9,10 @@ import com.py.cheng.nong.xiang.dailyreadjava.model.adapter.StoryAdapter;
 import com.py.cheng.nong.xiang.dailyreadjava.presenter.MainPresenter;
 import com.py.cheng.nong.xiang.dailyreadjava.view.MainView;
 
+/**
+ * @author xiang
+ */
+
 public class MainActivity extends BaseActivity<ActivityMainBinding> implements MainView {
 
     MainPresenter presenter;
@@ -19,24 +23,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements M
     }
 
     @Override
-    public void initViews() {
-        binding.storyList.setLayoutManager(new LinearLayoutManager(this));
-        setSupportActionBar(binding.toolbar);
-    }
-
-    @Override
-    public void initData() {
-        presenter.loadStoryList();
-    }
-
-    @Override
-    protected void initPresenter() {
-        presenter = new MainPresenter(this);
-        presenter.attachView(this);
-        presenter.onCreate();
-    }
-
-    @Override
     public void loadStoryList(StoryAdapter storyAdapter) {
         binding.storyList.setAdapter(storyAdapter);
     }
@@ -44,6 +30,23 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements M
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initViews() {
+        binding.storyList.setLayoutManager(new LinearLayoutManager(this));
+        setSupportActionBar(binding.toolbar);
+    }
+
+    @Override
+    protected void initData() {
+        presenter.loadStoryList();
+    }
+
+    @Override
+    protected void initPresenter() {
+        presenter = new MainPresenter(this);
+        presenter.attachView(this);
     }
 
 }

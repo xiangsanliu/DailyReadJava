@@ -13,7 +13,8 @@ import com.py.cheng.nong.xiang.dailyreadjava.view.MainView;
 import cz.msebera.android.httpclient.Header;
 
 /**
- * Created by xiang on 2018/3/14.
+ * @author xiang
+ * @date 2018/3/14
  */
 
 public class MainPresenter extends BasePresenter<MainView> {
@@ -22,11 +23,6 @@ public class MainPresenter extends BasePresenter<MainView> {
 
     public MainPresenter(Context context) {
         this.context = context;
-    }
-
-    @Override
-    public void onCreate() {
-        view.initViews();
     }
 
     public void loadStoryList() {

@@ -6,14 +6,13 @@ import android.widget.Toast;
 import com.py.cheng.nong.xiang.dailyreadjava.view.BaseView;
 
 /**
- * Created by xiang on 2018/3/14.
+ * @author xiang
+ * @date 2018/3/14
  */
 
 public abstract class BasePresenter<T extends BaseView> {
 
     protected T view;
-
-    public abstract void onCreate();
 
     public void attachView(T view) {
         this.view = view;
