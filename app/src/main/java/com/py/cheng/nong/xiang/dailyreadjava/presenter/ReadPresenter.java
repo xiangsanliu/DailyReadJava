@@ -5,6 +5,7 @@ import android.content.Context;
 import com.alibaba.fastjson.JSON;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.py.cheng.nong.xiang.dailyreadjava.model.HttpClient;
 import com.py.cheng.nong.xiang.dailyreadjava.model.bean.Article;
 import com.py.cheng.nong.xiang.dailyreadjava.share.SharedConstants;
 import com.py.cheng.nong.xiang.dailyreadjava.view.ReadView;
@@ -30,16 +31,16 @@ public class ReadPresenter extends BasePresenter<ReadView> {
      * @param id 文章的id
      */
     public void loadArticle(String id) {
-        new AsyncHttpClient().get(SharedConstants.ARTICLE_URL + id, new AsyncHttpResponseHandler() {
+        HttpClient.simpleGet(SharedConstants.ARTICLE_URL + id, new HttpClient.CallBack() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                Article article = JSON.parseObject(new String(responseBody), Article.class);
+            public void onSuccess(String data) {
+                Article article = JSON.parseObject(data, Article.class);
                 view.loadArticle(article);
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                showToast(context, error.getMessage());
+            public void onFailure(String msg) {
+                showToast(context, msg);
             }
         });
     }
