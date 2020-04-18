@@ -1,7 +1,7 @@
 package com.py.cheng.nong.xiang.dailyreadjava.ui;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.py.cheng.nong.xiang.dailyreadjava.R;
 import com.py.cheng.nong.xiang.dailyreadjava.databinding.ActivityMainBinding;
