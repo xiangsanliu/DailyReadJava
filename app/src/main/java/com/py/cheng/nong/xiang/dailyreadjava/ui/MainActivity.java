@@ -1,6 +1,7 @@
 package com.py.cheng.nong.xiang.dailyreadjava.ui;
 
 import android.os.Bundle;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.py.cheng.nong.xiang.dailyreadjava.R;
@@ -25,6 +26,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements M
     @Override
     public void loadStoryList(StoryAdapter storyAdapter) {
         binding.storyList.setAdapter(storyAdapter);
+        storyAdapter.setOnLoadMoreListener(() -> presenter.loadMoreStory(storyAdapter), binding.storyList);
     }
 
     @Override
